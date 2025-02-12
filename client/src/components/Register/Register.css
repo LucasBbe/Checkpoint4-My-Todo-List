@@ -1,0 +1,66 @@
+/* Centrage du formulaire */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f7fa;
+}
+
+/* Style du formulaire */
+.auth-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style des champs de saisie */
+.auth-form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.auth-form input:focus {
+  border-color: #007bff;
+}
+
+/* Style du bouton */
+.auth-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.auth-form button:hover {
+  background-color: #0056b3;
+}
+
+.auth-back-btn {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.auth-back-btn:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

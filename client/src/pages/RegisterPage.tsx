@@ -1,9 +1,12 @@
 import "./RegisterPage.css";
+import { ToastContainer } from "react-toastify";
+import Register from "../components/Register/Register";
 
 function RegisterPage() {
   return (
-    <section className="table-page-section">
-      <h1>Page Register</h1>
+    <section>
+      <ToastContainer />
+      <Register />
     </section>
   );
 }
