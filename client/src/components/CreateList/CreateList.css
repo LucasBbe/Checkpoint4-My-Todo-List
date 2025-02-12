@@ -26,3 +26,93 @@
   width: 1rem;
   height: auto;
 }
+
+.add-list-form {
+  background-color: rgb(228, 225, 225);
+  border-radius: 15px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #ffffffd0;
+  border: none;
+  color: black;
+  font-size: 1rem;
+}
+
+.list > section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0.5rem 0.3rem 1rem 0.3rem;
+}
+.list > section > button {
+  background: none;
+  border: none;
+}
+.list > section > button > img {
+  width: 12px;
+  height: auto;
+}
+
+.list-create-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #ffffffd0;
+  border: none;
+  color: black;
+  font-size: 1rem;
+}
+.list-create-input > input {
+  border-color: rgba(39, 83, 226, 0.836);
+  border-radius: 5px;
+  padding: 15px;
+  width: 95%;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.buttons {
+  width: 100%;
+  padding: 5px;
+}
+.create-list {
+  background-color: rgba(35, 74, 204, 0.897);
+  color: rgb(240, 237, 237);
+  height: 30px;
+  width: 50%;
+  border: none;
+  margin-right: 1rem;
+}
+
+.delete-list {
+  border: none;
+  background: none;
+}
+
+.create-card {
+  display: flex;
+  text-align: start;
+  align-items: center;
+  width: 265px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #2f32df9a;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  gap: 1rem;
+}
+
+.create-card > img {
+  width: 1rem;
+  height: auto;
+}

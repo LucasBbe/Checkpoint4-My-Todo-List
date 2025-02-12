@@ -3,3 +3,12 @@
   height: 100%;
   padding: 1rem;
 }
+.table-page-section h2 {
+  color: white;
+  margin: 1rem 0 1rem 0;
+}
+
+.all-list {
+  display: flex;
+  gap: 1rem;
+}
