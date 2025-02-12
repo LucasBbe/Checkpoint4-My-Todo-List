@@ -1,21 +1,30 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE `user` (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE `table` (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  user_id INT NULL,
+  FOREIGN KEY (user_id) REFERENCES `user`(id) ON DELETE SET NULL
 );
 
-insert into user(id, email, password)
-values
-  (1, "jdoe@mail.com", "123456");
+CREATE TABLE `list` (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  position INT NOT NULL,  
+  table_id INT NOT NULL,
+  FOREIGN KEY (table_id) REFERENCES `table`(id) ON DELETE CASCADE
+);
 
-insert into item(id, title, user_id)
-values
-  (1, "Stuff", 1),
-  (2, "Doodads", 1);
+CREATE TABLE `card` (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255),
+  description VARCHAR(1500),
+  position INT NOT NULL,
+  list_id INT NOT NULL,
+  FOREIGN KEY (list_id) REFERENCES `list`(id) ON DELETE CASCADE
+);
