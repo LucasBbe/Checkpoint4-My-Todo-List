@@ -1,9 +1,12 @@
 import "./LoginPage.css";
+import { ToastContainer } from "react-toastify";
+import Login from "../components/Login/Login";
 
 function LoginPage() {
   return (
-    <section className="table-page-section">
-      <h1>Page Login</h1>
+    <section>
+      <ToastContainer />
+      <Login />
     </section>
   );
 }
