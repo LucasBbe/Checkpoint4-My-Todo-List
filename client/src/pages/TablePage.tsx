@@ -1,8 +1,12 @@
 import "./TablePage.css";
+import CreateList from "../components/CreateList/CreateList";
+
 function TablePage() {
   return (
     <section className="table-page-section">
-      <h1>Page Table</h1>
+      <ol>
+        <CreateList />
+      </ol>
     </section>
   );
 }

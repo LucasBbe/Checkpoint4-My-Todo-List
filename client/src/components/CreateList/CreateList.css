@@ -1,0 +1,28 @@
+.create-list-section {
+  display: block;
+  flex-shrink: 0;
+  align-self: flex-start;
+  align-items: center;
+  padding: 0 6px;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.create-list-section > button {
+  display: flex;
+  text-align: start;
+  align-items: center;
+  width: 272px;
+  padding: 12px;
+  border-radius: 12px;
+  background-color: #ffffff3d;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  gap: 1rem;
+}
+
+.create-list-section > button > img {
+  width: 1rem;
+  height: auto;
+}
