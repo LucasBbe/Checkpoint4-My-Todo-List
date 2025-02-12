@@ -1,0 +1,76 @@
+.the-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7d2650;
+  height: 80px;
+}
+
+.the-header > a > img {
+  width: 8vw;
+  height: auto;
+  padding: 1rem;
+}
+
+.the-header > section {
+  display: flex;
+  align-items: center;
+}
+
+.the-header > section > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.the-header > section > a:first-of-type {
+  background: rgb(233, 231, 231);
+  color: #1779ca;
+  font-size: 0.9rem;
+  font-weight: 600;
+  height: 25px;
+  width: 70px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.button-register {
+  color: rgb(233, 231, 231);
+  background: #1779ca;
+  font-size: 0.9rem;
+  font-weight: 600;
+  height: 27px;
+  width: 70px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+
+.the-header > section > button > p {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.logo-profile-not-connected {
+  width: 3vw;
+  height: auto;
+  padding: 0.3rem;
+  margin-right: 1rem;
+}
+
+.chevron {
+  width: 1rem;
+  height: auto;
+  margin: 0 1.5rem 0 0.5rem;
+  filter: invert(1) brightness(3);
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
