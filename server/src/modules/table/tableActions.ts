@@ -1,11 +1,10 @@
 import type { RequestHandler } from "express";
 
-import listRepository from "./listRepository";
+import TableRepository from "./tableRepository";
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    const { tableId } = req.params;
-    const items = await listRepository.getListsByTableId(Number(tableId));
+    const items = await TableRepository.readAll();
 
     res.json(items);
   } catch (err) {
@@ -16,7 +15,7 @@ const browse: RequestHandler = async (req, res, next) => {
 const read: RequestHandler = async (req, res, next) => {
   try {
     const TableId = Number(req.params.id);
-    const table = await listRepository.getListsByTableId(TableId);
+    const table = await TableRepository.read(TableId);
 
     if (table == null) {
       res.sendStatus(404);
@@ -30,17 +29,12 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const newList = {
+    const newTable = {
       name: req.body.name,
-      position: req.body.position,
-      table_id: req.body.user_id || null,
+      user_id: req.body.user_id || null,
     };
 
-    const insertId = await listRepository.createList(
-      newList.name,
-      newList.position,
-      newList.table_id,
-    );
+    const insertId = await TableRepository.create(newTable);
 
     res.status(201).json({ insertId });
   } catch (err) {
@@ -58,7 +52,7 @@ const update: RequestHandler = async (req, res) => {
   }
 
   try {
-    await listRepository.updateList(Number(id), name);
+    await TableRepository.update(Number(id), name);
     res.status(200).json({ message: "Tableau modifié avec succès." });
   } catch (error) {
     console.error(error);
@@ -71,7 +65,7 @@ const update: RequestHandler = async (req, res) => {
 const remove: RequestHandler = async (req, res, next) => {
   try {
     const tableId = Number(req.params.id);
-    await listRepository.deleteList(tableId);
+    await TableRepository.delete(tableId);
 
     res.sendStatus(204);
   } catch (err) {

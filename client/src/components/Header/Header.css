@@ -2,12 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #7d2650;
+  background-color: #872013;
   height: 80px;
+  border-bottom: 0.1px solid rgba(255, 255, 255, 0.418);
 }
 
 .the-header > a > img {
-  width: 8vw;
+  width: 10rem;
   height: auto;
   padding: 1rem;
 }
@@ -54,7 +55,7 @@
 }
 
 .logo-profile-not-connected {
-  width: 3vw;
+  width: 3rem;
   height: auto;
   padding: 0.3rem;
   margin-right: 1rem;

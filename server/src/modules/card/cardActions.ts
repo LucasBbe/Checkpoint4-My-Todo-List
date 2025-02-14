@@ -1,22 +1,11 @@
 import type { RequestHandler } from "express";
 
-import listRepository from "./listRepository";
-
-const browse: RequestHandler = async (req, res, next) => {
-  try {
-    const { tableId } = req.params;
-    const items = await listRepository.getListsByTableId(Number(tableId));
-
-    res.json(items);
-  } catch (err) {
-    next(err);
-  }
-};
+import cardRepository from "./cardRepository";
 
 const read: RequestHandler = async (req, res, next) => {
   try {
     const TableId = Number(req.params.id);
-    const table = await listRepository.getListsByTableId(TableId);
+    const table = await cardRepository.getCardsByListId(TableId);
 
     if (table == null) {
       res.sendStatus(404);
@@ -30,17 +19,9 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const newList = {
-      name: req.body.name,
-      position: req.body.position,
-      table_id: req.body.user_id || null,
-    };
+    const { title, position, listId } = req.body;
 
-    const insertId = await listRepository.createList(
-      newList.name,
-      newList.position,
-      newList.table_id,
-    );
+    const insertId = await cardRepository.createCard(title, position, listId);
 
     res.status(201).json({ insertId });
   } catch (err) {
@@ -50,15 +31,15 @@ const add: RequestHandler = async (req, res, next) => {
 
 const update: RequestHandler = async (req, res) => {
   const { id } = req.params;
-  const { name } = req.body;
+  const { title } = req.body;
 
-  if (!name) {
+  if (!title) {
     res.status(400).json({ message: "Le nouveau nom est requis." });
     return;
   }
 
   try {
-    await listRepository.updateList(Number(id), name);
+    await cardRepository.updateCard(Number(id), title);
     res.status(200).json({ message: "Tableau modifié avec succès." });
   } catch (error) {
     console.error(error);
@@ -71,7 +52,7 @@ const update: RequestHandler = async (req, res) => {
 const remove: RequestHandler = async (req, res, next) => {
   try {
     const tableId = Number(req.params.id);
-    await listRepository.deleteList(tableId);
+    await cardRepository.deleteCard(tableId);
 
     res.sendStatus(204);
   } catch (err) {
@@ -79,4 +60,4 @@ const remove: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, update, remove };
+export default { read, add, update, remove };

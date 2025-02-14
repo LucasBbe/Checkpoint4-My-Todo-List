@@ -1,7 +1,7 @@
 import databaseClient from "../../../database/client";
 
+import type { ResultSetHeader } from "mysql2";
 import type { Result, Rows } from "../../../database/client";
-
 type list = {
   id: number;
   name: string;
@@ -9,29 +9,38 @@ type list = {
   table_id: number;
 };
 
-class ItemRepository {
-  async create(item: Omit<list, "id">) {
-    const [result] = await databaseClient.query<Result>(
-      "insert into list (name, position, table_id) values (?, ?, ?)",
-      [item.name, item.position, item.table_id],
+class ListRepository {
+  async getListsByTableId(tableId: number) {
+    const [rows] = await databaseClient.query<Rows[]>(
+      "SELECT * FROM `list` WHERE table_id = ? ORDER BY position",
+      [tableId],
     );
-
-    return result.insertId;
+    return rows;
   }
 
-  async read(id: number) {
-    const [rows] = await databaseClient.query<Rows>(
-      "select * from item where id = ?",
+  async createList(name: string, position: number, tableId: number) {
+    const [result] = await databaseClient.query<ResultSetHeader>(
+      "INSERT INTO `list` (name, position, table_id) VALUES (?, ?, ?)",
+      [name, position, tableId],
+    );
+    return result;
+  }
+
+  async updateList(id: number, name: string) {
+    const [result] = await databaseClient.query(
+      "UPDATE `list` SET name = ? WHERE id = ?",
+      [name, id],
+    );
+    return result;
+  }
+
+  async deleteList(id: number) {
+    const [result] = await databaseClient.query(
+      "DELETE FROM `list` WHERE id = ?",
       [id],
     );
-    return rows[0] as list;
-  }
-
-  async readAll() {
-    const [rows] = await databaseClient.query<Rows>("select * from item");
-
-    return rows as list[];
+    return result;
   }
 }
 
-export default new ItemRepository();
+export default new ListRepository();
