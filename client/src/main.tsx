@@ -10,6 +10,7 @@ import App from "./App";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import TablePage from "./pages/TablePage";
+import UserTablePage from "./pages/UserTable";
 
 /* ************************************************************************* */
 
@@ -21,6 +22,17 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <TablePage />,
+      },
+      {
+        path: "/:id",
+        element: <UserTablePage />,
+        loader: async ({ params }) => {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/table/${params.id}`,
+          );
+          const data = await response.json();
+          return data;
+        },
       },
     ],
   },

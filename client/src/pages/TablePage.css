@@ -1,5 +1,5 @@
 .table-page-section {
-  background-color: rgb(205, 90, 145);
+  background: linear-gradient(#e75a36, #f89d3d);
   height: 100%;
   padding: 1rem;
 }
@@ -8,7 +8,13 @@
   margin: 1rem 0 1rem 0;
 }
 
+.table-page-section p {
+  color: white;
+  margin: 1rem 0 2rem 0;
+}
+
 .all-list {
   display: flex;
   gap: 1rem;
+  align-items: flex-start;
 }
